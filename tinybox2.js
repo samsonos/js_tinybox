@@ -9,9 +9,9 @@ var sjstinybox = {
      *
      * @param handler
      */
-    tinyboxAjax : function(responseHandler, beforeHandler){
+    tinyboxAjax : function(respContainerName, responseHandler, beforeHandler){
         // Iterate all DOM elements in current selection
-        return this.each(function(elm, respContainerName)
+        return this.each(function(elm)
         {
             // If no response container name is specified use 'html'
             respContainerName = respContainerName ? respContainerName : 'html';
