@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 {"name":"samsonos/tinybox","author":"Vitaly Iegorov <egorov@samsonos.com>","version":"0.0.1","require":{"SamsonJS":"*.*.*"}}
-=======
-{"name":"samsonos/samsonjs","author":"Vitaly Iegorov <egorov@samsonos.com>","version":"0.0.1","require":{}}
->>>>>>> 6feee6e03f87deb5cbf2c69f08a5b7ba75a82cb4
