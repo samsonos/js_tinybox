@@ -1,0 +1,2 @@
+/* "Темный" фон под изображением */
+.sjs-lightbox-bg { background-color:#000; position:absolute; top:0px; left:0px; z-index:998; width:100%; height:100%; background-color:rgba(0,0,0,0.75); filter: alpha(opacity=80); }
