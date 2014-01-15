@@ -9,7 +9,21 @@ var sjstinybox = {
      *
      * @param handler
      */
-    tinyboxAjax : function(respContainerName, responseHandler, beforeHandler){
+    tinyboxAjax : function(respContainerName){
+        var responseHandler = undefined;
+        var beforeHandler = undefined;
+        var oneClickClose = true;
+
+        // If options object is passed
+        if(typeof respContainerName === 'object')
+        {
+            oneClickClose = respContainerName.oneClickClose;
+            responseHandler = respContainerName.responseHandler;
+            beforeHandler = respContainerName.beforeHandler;
+            // Get html container name
+            respContainerName = respContainerName.html;
+        }
+
         // Iterate all DOM elements in current selection
         return this.each(function(elm)
         {
@@ -33,7 +47,7 @@ var sjstinybox = {
                         // Append response to body
                         s(document.body).append(form);
                         // Show tinybox
-                        var tb = tinybox(form);
+                        var tb = tinybox(form, oneClickClose);
                     }
                 }
             });
