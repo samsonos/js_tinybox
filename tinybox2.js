@@ -36,12 +36,8 @@ var sjstinybox = {
 
             // Bind asynchronous request on element click
             elm.ajaxClick(function(response, clickable){
-
-                // Call beforeHandler if passed and save return value, default - true
-                var beforeStatus = beforeHandler != undefined ? beforeHandler(elm) : true;
-
                 // If we recieved html container
-                if ((beforeStatus == true) && (response[respContainerName] != undefined)) {
+                if (response[respContainerName] != undefined) {
                     // Call responseHandler if passed and save return value, default - true
                     var responseStatus = responseHandler != undefined ? responseHandler(response, elm) : true;
                     // If response handler succeded - show tiny box
@@ -57,7 +53,7 @@ var sjstinybox = {
                         if(renderedHandler) renderedHandler(form, tb);
                     }
                 }
-            });
+            }, beforeHandler);
         });
     }
 };
