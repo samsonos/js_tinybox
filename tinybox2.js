@@ -41,11 +41,11 @@ var sjstinybox = {
                 var beforeStatus = beforeHandler != undefined ? beforeHandler(elm) : true;
 
                 // If we recieved html container
-                if (beforeStatus && response[respContainerName] != undefined) {
+                if ((beforeStatus == true) && (response[respContainerName] != undefined)) {
                     // Call responseHandler if passed and save return value, default - true
                     var responseStatus = responseHandler != undefined ? responseHandler(response, elm) : true;
                     // If response handler succeded - show tiny box
-                    if (responseStatus) {
+                    if (responseStatus == true) {
                         // Create SamsonJS object
                         var form = s(response[respContainerName]);
                         // Append response to body
