@@ -15,5 +15,5 @@ class TinyBox extends \samson\core\CompressableExternalModule
 	protected $id = 'tinybox';	
 	
 	/** Module dependencies */
-	protected $requirements = array('SamsonJS');
+	protected $requirements = array('samsonjs');
 }
