@@ -125,7 +125,7 @@ var tinybox = function( selector, oneClickClose )
 			if( clickedElement != undefined &&
 				!clickedElement.hasClass('__samsonjs-tinybox-popup')&&
 				!clickedElement.parent('__samsonjs-tinybox-popup').hasClass('__samsonjs-tinybox-popup') ) 
-				tinyboxObj.close();
+				tinyboxObj.hide();
 		});
 	}
 	
