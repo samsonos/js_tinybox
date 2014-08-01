@@ -1,8 +1,8 @@
 /**
  * Вывести контейнер на черном фоне в центре экрана
  */
-var tinybox = function( selector, oneClickClose )
-{		
+var tinybox = function( selector, oneClickClose, darkBackground )
+{
 	var tinyboxObj = {};
 	
 	// Safely get object
@@ -18,8 +18,14 @@ var tinybox = function( selector, oneClickClose )
 	selector.addClass('__samsonjs-tinybox-popup');		
 		
 	// Create BG
-	var bg_container = s('<div class="sjs-lightbox-bg" style="display:none;position:fixed;"></div>');
-		
+    var bg_str = '<div class="sjs-lightbox-bg" style="display:none;position:fixed;';
+    if (!darkBackground) {
+        bg_str += 'background-color: transparent;';
+    }
+    bg_str += '"></div>';
+
+	var bg_container = s(bg_str);
+
 	// Append BG
 	s(document.body).append( bg_container );		
 	

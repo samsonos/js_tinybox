@@ -16,6 +16,8 @@ var sjstinybox = {
         var renderedHandler = undefined;
         var beforeHandler = undefined;
         var oneClickClose = true;
+        // Set background style
+        var darkBackground = true;
 
         // If options object is passed
         if(typeof respContainerName === 'object')
@@ -24,6 +26,9 @@ var sjstinybox = {
             responseHandler = respContainerName.responseHandler;
             beforeHandler = respContainerName.beforeHandler;
             renderedHandler = respContainerName.renderedHandler;
+            if (respContainerName.darkBackground !== undefined) {
+                darkBackground = respContainerName.darkBackground;
+            }
             // Get html container name
             respContainerName = respContainerName.html;
         }
@@ -47,7 +52,7 @@ var sjstinybox = {
                         // Append response to body
                         s(document.body).append(form);
                         // Show tinybox
-                        var tb = tinybox(form, oneClickClose);
+                        var tb = tinybox(form, oneClickClose, darkBackground);
 
                         // If render finish handler is passed - call it
                         if(renderedHandler) renderedHandler(form, tb);
