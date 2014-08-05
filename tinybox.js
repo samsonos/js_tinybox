@@ -19,7 +19,7 @@ var tinybox = function( selector, oneClickClose, darkBackground )
 		
 	// Create BG
     var bg_str = '<div class="sjs-lightbox-bg" style="display:none;position:fixed;';
-    if (!darkBackground) {
+    if (darkBackground !== undefined && darkBackground == false) {
         bg_str += 'background-color: transparent;';
     }
     bg_str += '"></div>';
