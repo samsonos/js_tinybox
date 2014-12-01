@@ -1,7 +1,7 @@
 /**
  * Вывести контейнер на черном фоне в центре экрана
  */
-var tinybox = function( selector, oneClickClose, darkBackground )
+var tinybox = function( selector, oneClickClose, darkBackground, deleteOnOneClickClose )
 {
 	var tinyboxObj = {};
 	
@@ -130,8 +130,13 @@ var tinybox = function( selector, oneClickClose, darkBackground )
 			// Если мы нажали НЕ на наш контейнер - закроем
 			if( clickedElement != undefined &&
 				!clickedElement.hasClass('__samsonjs-tinybox-popup')&&
-				!clickedElement.parent('__samsonjs-tinybox-popup').hasClass('__samsonjs-tinybox-popup') ) 
-				tinyboxObj.hide();
+				!clickedElement.parent('__samsonjs-tinybox-popup').hasClass('__samsonjs-tinybox-popup') ) {
+                if (deleteOnOneClickClose) {
+                    tinyboxObj.close();
+                } else {
+                    tinyboxObj.hide();
+                }
+            }
 		});
 	}
 	
