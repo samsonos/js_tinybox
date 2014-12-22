@@ -138,6 +138,16 @@ var tinybox = function( selector, oneClickClose, darkBackground, deleteOnOneClic
                 }
             }
 		});
+
+        s('html').keyup(function(search, params, e) {
+            if (e.keyCode == 27) {
+                if (deleteOnOneClickClose) {
+                    tinyboxObj.close();
+                } else {
+                    tinyboxObj.hide();
+                }
+            }
+        });
 	}
 	
 	// Show tinybox
