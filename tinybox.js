@@ -116,7 +116,7 @@ var tinybox = function( selector, oneClickClose, darkBackground, deleteOnOneClic
 	window.onresize = tinyboxObj.calculate;
 	
 	// Closer
-	s('.close-button', selector).click( tinyboxObj._hide, true, true );
+	s('.close-button', selector).click( tinyboxObj._close, true, true );
 
     // If we must close TB on click anywhere else
 	if (oneClickClose)
