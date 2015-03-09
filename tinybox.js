@@ -116,39 +116,45 @@ var tinybox = function( selector, oneClickClose, darkBackground, deleteOnOneClic
 	window.onresize = tinyboxObj.calculate;
 	
 	// Closer
-	s('.close-button', selector).click( tinyboxObj._close, true, true );
+	s('.close-button', selector).click( tinyboxObj._hide, true, true );
 
     // If we must close TB on click anywhere else
 	if (oneClickClose)
 	{			
 		// Повесим обработчик для закрытия 
 		s('html').click(function( obj, opt, e )
-		{					
-			// Получим элемент на который нажали 
-			var clickedElement = s(e.srcElement||e.originalTarget);		
-
-			// Если мы нажали НЕ на наш контейнер - закроем
-			if( clickedElement != undefined &&
-				!clickedElement.hasClass('__samsonjs-tinybox-popup')&&
-				!clickedElement.parent('__samsonjs-tinybox-popup').hasClass('__samsonjs-tinybox-popup') ) {
-                if (deleteOnOneClickClose) {
-                    tinyboxObj.close();
-                } else {
-                    tinyboxObj.hide();
-                }
+		{
+            if (tbCheckCloseEvent(e)) {
+                tinyboxObj.close();
             }
 		});
+        s('html').DOMElement.addEventListener("touchend", function(e) {
+            if (tbCheckCloseEvent(e)) {
+                tinyboxObj.close();
+            }
+        }, false);
 
         s('html').keyup(function(search, params, e) {
             if (e.keyCode == 27) {
-                if (deleteOnOneClickClose) {
-                    tinyboxObj.close();
-                } else {
-                    tinyboxObj.hide();
-                }
+                tinyboxObj.close();
             }
         });
 	}
+
+    function tbCheckCloseEvent(e)
+    {
+        // Получим элемент на который нажали
+        var clickedElement = s(e.srcElement||e.originalTarget);
+
+        // Если мы нажали НЕ на наш контейнер - закроем
+        if (clickedElement != undefined &&
+            !clickedElement.hasClass('__samsonjs-tinybox-popup')&&
+            !clickedElement.parent('__samsonjs-tinybox-popup').hasClass('__samsonjs-tinybox-popup') ) {
+            return true;
+        }
+
+        return false;
+    }
 	
 	// Show tinybox
 	tinyboxObj._show();
