@@ -125,18 +125,30 @@ var tinybox = function( selector, oneClickClose, darkBackground, deleteOnOneClic
 		s('html').click(function( obj, opt, e )
 		{
             if (tbCheckCloseEvent(e)) {
-                tinyboxObj.close();
+                if (deleteOnOneClickClose) {
+                    tinyboxObj.close();
+                } else {
+                    tinyboxObj.hide();
+                }
             }
 		});
         s('html').DOMElement.addEventListener("touchend", function(e) {
             if (tbCheckCloseEvent(e)) {
-                tinyboxObj.close();
+                if (deleteOnOneClickClose) {
+                    tinyboxObj.close();
+                } else {
+                    tinyboxObj.hide();
+                }
             }
         }, false);
 
         s('html').keyup(function(search, params, e) {
             if (e.keyCode == 27) {
-                tinyboxObj.close();
+                if (deleteOnOneClickClose) {
+                    tinyboxObj.close();
+                } else {
+                    tinyboxObj.hide();
+                }
             }
         });
 	}
