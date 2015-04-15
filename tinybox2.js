@@ -51,8 +51,8 @@ var sjstinybox = {
                         var form = s(response[respContainerName]);
                         // Append response to body
                         s(document.body).append(form);
-                        // Show tinybox
-                        var tb = tinybox(form, oneClickClose, darkBackground);
+                        // Show tinybox - on close delete as it is async
+                        var tb = tinybox(form, oneClickClose, darkBackground, true);
 
                         // If render finish handler is passed - call it
                         if(renderedHandler) renderedHandler(form, tb);
