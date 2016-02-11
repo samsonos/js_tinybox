@@ -116,7 +116,11 @@ var tinybox = function( selector, oneClickClose, darkBackground, deleteOnOneClic
 	window.onresize = tinyboxObj.calculate;
 	
 	// Closer
-	s('.close-button', selector).click( tinyboxObj._hide, true, true );
+	s('.close-button', selector).click(
+        deleteOnOneClickClose ? tinyboxObj.close : tinyboxObj.hide,
+        true,
+        true
+    );
 
     // If we must close TB on click anywhere else
 	if (oneClickClose)
@@ -125,18 +129,30 @@ var tinybox = function( selector, oneClickClose, darkBackground, deleteOnOneClic
 		s('html').click(function( obj, opt, e )
 		{
             if (tbCheckCloseEvent(e)) {
-                tinyboxObj.close();
+                if (deleteOnOneClickClose) {
+                    tinyboxObj.close();
+                } else {
+                    tinyboxObj.hide();
+                }
             }
 		});
         s('html').DOMElement.addEventListener("touchend", function(e) {
             if (tbCheckCloseEvent(e)) {
-                tinyboxObj.close();
+                if (deleteOnOneClickClose) {
+                    tinyboxObj.close();
+                } else {
+                    tinyboxObj.hide();
+                }
             }
         }, false);
 
         s('html').keyup(function(search, params, e) {
             if (e.keyCode == 27) {
-                tinyboxObj.close();
+                if (deleteOnOneClickClose) {
+                    tinyboxObj.close();
+                } else {
+                    tinyboxObj.hide();
+                }
             }
         });
 	}
